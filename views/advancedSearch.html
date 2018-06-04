@@ -1,0 +1,11 @@
+{% macro render(context, name) %}
+  <div class="apos-as---o-layer apos-as-container">
+    {{ apos.singleton(context, name, 'apostrophe-advanced-search', {
+      controls: {
+        removable: false,
+        movable: false,
+        cloneable: false
+      }
+    }) }}
+  </div>
+{% endmacro %}
