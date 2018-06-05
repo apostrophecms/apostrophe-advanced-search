@@ -1,27 +1,7 @@
 {% import "_macros.html" as macros %}
 
-{% set filters =
-  [{
-    name: 'content',
-    label: 'By Content',
-    items: [
-      {  name: 'page', label: 'Pages', url: '??', count: 10 },
-      {  name: 'products', label: 'Products', url: '??', count: 5 },
-      {  name: 'profiles', label: 'Profiles', url: '??', count: 3 },
-      {  name: 'articles', label: 'Articles', url: '??', count: 1 }
-    ]
-  },
-  {
-    name: 'another',
-    label: 'By Another One',
-    items: [
-      {  name: 'page', label: 'Hello', url: '??', count: 3 },
-      {  name: 'products', label: 'Goobye', url: '??', count: 3 },
-      {  name: 'profiles', label: 'Nice to See You', url: '??', count: 99 },
-      {  name: 'articles', label: 'Hell this is an item', url: '??', count: 59 }
-    ]
-  }]
-%}
+{%- set filters = apos.modules['apostrophe-advanced-search'].filters -%}
+{%- set matches = apos.modules['apostrophe-advanced-search'].matches -%}
 
 
 <div class="apos-as" data-apos-as>
@@ -40,17 +20,27 @@
       {{ macros.filters(filters) }}
     </div>
     <div class="apos-as__results__column apos-as__results__matches" data-apos-as-matches>
-    hello
+      {{ macros.matches(matches) }}
     </div>
     <div class="apos-as__results__column apos-as__results__static" data-apos-as-static>
-      whatup
+      <div class="apos-as__static-item">
+        <img src="http://via.placeholder.com/350x150" alt="">
+        <p>Okras are dusky errors. One cannot separate dimples from unblenched loves. Before uses, fiberglasses were only beaches. This is not to discredit the idea that one cannot separate polands from dreamlike mice.</p>
+      </div>
+      <div class="apos-as__static-item">
+        <img src="http://via.placeholder.com/350x150" alt="">
+        <p>A spring is a sampan from the right perspective. The geese could be said to resemble unfledged pinks. Okras are dusky errors. One cannot separate dimples from unblenched loves. Before uses, fiberglasses were only beaches. This is not to discredit the idea that one cannot separate polands from dreamlike mice.</p>
+      </div>
     </div>
   </div>
   <div class="apos-as__pager">
     <button class="apos-as__pager__button apos-as__pager__button--prev" data-apos-as-prev>Prev</button>
     <ul class="apos-as__pager__pages">
       <li class="apos-as__pager__page">
-        <button class="apos-as__pager__page-button">1</button>
+        <button class="apos-as__pager__page-button apos-as__pager__page-button--active">1</button>
+        <button class="apos-as__pager__page-button">2</button>
+        <button class="apos-as__pager__page-button">3</button>
+        <button class="apos-as__pager__page-button">4</button>
       </li>
     </ul>
     <button class="apos-as__pager__button apos-as__pager__button--next" data-apos-as-next>Next</button>

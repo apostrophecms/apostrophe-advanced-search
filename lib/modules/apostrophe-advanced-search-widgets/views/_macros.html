@@ -1,5 +1,5 @@
 {% macro mag() %}
-  <svg class="apos-as---o-mag" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <svg class="apos-as---o-mag" width="18px" height="18px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
       <g transform="translate(-4926.000000, -184.000000)">
         <g transform="translate(4027.000000, 142.000000)">
@@ -44,5 +44,31 @@
 {% macro filters(array) %}
   {% for item in array %}
     {{ filterItem(item) }}
+  {% endfor %}
+{% endmacro %}
+
+{% macro matchItem(matchObject) %}
+  {% set m = matchObject %}
+  <section class="apos-as--c-match">
+    <a class="apos-as--c-match__title" href="{{ m.url }}" >{{ m.title }}</a>
+    <a class="apos-as--c-match__url" href="{{ m.url }}">{{ m.url }}</a>
+    <p class="apos-as--c-match__excerpt">
+      {{ m.excerpt }}
+    </p>
+    {% if m.groups.length %}
+      <ul class="apos-as--c-match__group-items">
+        {% for item in m.groups %}
+          <li class="apos-as--c-match__group-item">
+            <button class="apos-as--c-match__group-item-button">{{ item.typeLabel }}</button>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </section>
+{% endmacro %}
+
+{% macro matches(array) %}
+  {% for item in array %}
+    {{ matchItem(item) }}
   {% endfor %}
 {% endmacro %}

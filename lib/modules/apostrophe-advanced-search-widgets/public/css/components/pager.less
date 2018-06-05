@@ -1,0 +1,53 @@
+.apos-as__pager__button,
+.apos-as__pager__page-button {
+  border-radius: 0;
+  outline: none;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  &:hover {
+    color: @apos-as-link;
+    cursor: pointer;
+  }
+}
+
+.apos-as__pager__button,
+.apos-as__pager__page-button--active {
+  border: 1px solid #D5D5D5;
+  &:hover {
+    border: 1px solid @apos-as-link;
+    cursor: pointer;
+  }
+}
+
+.apos-as__pager__page-button--active {
+  border: 1px solid @apos-as-link;
+}
+
+.apos-as__pager__page-button {
+  padding: 0 8px;
+  margin: 0 5px;
+}
+
+.apos-as__pager {
+  margin-left: 15%;
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #D5D5D5;
+  padding-top: 20px;
+  height: 60px;
+}
+
+.apos-as__pager__button {
+  width: 10%;
+  text-align: center;
+  -webkit-transform: all 0.3s ease;
+  transform: all 0.3s ease;
+
+}
+
+.apos-as__pager__pages,
+.apos-as__pager__page {
+  display: flex;
+}

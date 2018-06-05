@@ -26,7 +26,7 @@
     opacity: 0.5;
     position: absolute;
     right: 0;
-    top: 7px;
+    top: 10px;
     -webkit-transition: opacity 0.3s ease;
     transition: opacity 0.3s ease;
   }
@@ -40,7 +40,7 @@
 .apos-as__search-indicator {
   position: absolute;
   font-size: 26px;
-  border-bottom: 3px solid #4A90E2;
+  border-bottom: 3px solid @apos-as-link;
   padding: 5px 0;
   overflow: hidden;
   height: 2px;
@@ -61,7 +61,7 @@
   border: none;
   border-bottom: 3px solid rgba(255,255,255,0.2);
   padding: 5px 0;
-  caret-color: #4A90E2;
+  caret-color: @apos-as-link;
   &:focus {
     & + .apos-as__input-icon {
       opacity: 1;
@@ -69,11 +69,11 @@
   }
   &::-moz-selection {
       color: white;
-      background: #4A90E2;
+      background: @apos-as-link;
   }
   &::selection {
       color: white;
-      background: #4A90E2;
+      background: @apos-as-link;
   }
   ::-webkit-input-placeholder {
     color: rgba(255,255,255,0.2);
