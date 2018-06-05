@@ -4,12 +4,12 @@
   justify-content: center;
   background-color: #000;
   height: 10vh;
+  margin-bottom: 40px;
 }
 
 .apos-as__input-outer-wrapper {
   max-width: 70%;
   width: 100%;
-  // border: 1px solid white;
   display: flex;
   justify-content: center
 }
@@ -18,16 +18,38 @@
   align-self: center;
   position: relative;
   width: 100%;
+  opacity: 0.75;
+  -webkit-transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease;
+
+  .apos-as__input-icon {
+    opacity: 0.5;
+    position: absolute;
+    right: 0;
+    top: 7px;
+    -webkit-transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease;
+  }
+}
+
+.apos-as__input-inner-wrapper--active {
+  opacity: 1;
+  .apos-as__input-icon { opacity: 1 }
 }
 
 .apos-as__search-indicator {
   position: absolute;
   font-size: 26px;
-  border-bottom: 2px solid blue;
+  border-bottom: 3px solid #4A90E2;
   padding: 5px 0;
   overflow: hidden;
   height: 2px;
   bottom: 0;
+}
+
+.apos-as__input-icon {
+  border: none;
+  background-color: transparent;
 }
 
 .apos-as__search-input {
@@ -37,8 +59,34 @@
   background: transparent;
   outline: none;
   border: none;
-  border-bottom: 2px solid rgba(255,255,255,0.2);
+  border-bottom: 3px solid rgba(255,255,255,0.2);
   padding: 5px 0;
+  caret-color: #4A90E2;
+  &:focus {
+    & + .apos-as__input-icon {
+      opacity: 1;
+    }
+  }
+  &::-moz-selection {
+      color: white;
+      background: #4A90E2;
+  }
+  &::selection {
+      color: white;
+      background: #4A90E2;
+  }
+  ::-webkit-input-placeholder {
+    color: rgba(255,255,255,0.2);
+  }
+  ::-moz-placeholder {
+    color: rgba(255,255,255,0.2);
+  }
+  :-ms-input-placeholder {
+    color: rgba(255,255,255,0.2);
+  }
+  :-moz-placeholder {
+    color: rgba(255,255,255,0.2);
+  }
 }
 
 .apos-as__close {
@@ -46,7 +94,14 @@
   top: 10px;
   right: 10px;
   border: 0;
-  height: 20px;
-  width: 20px;
-  background: red;
+  padding: 10px;
+  background-color: transparent;
+  border: none;
+  svg {
+    max-width: 13px;
+    max-height: 13px;
+  }
+  &:hover {
+    cursor: pointer;
+  }
 }
