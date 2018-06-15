@@ -47,23 +47,24 @@
   {% endfor %}
 {% endmacro %}
 
-{% macro matchItem(matchObject) %}
-  {% set m = matchObject %}
+{% macro matchItemTemplate() %}
   <section class="apos-as--c-match">
-    <a class="apos-as--c-match__title" href="{{ m.url }}" >{{ m.title }}</a>
-    <a class="apos-as--c-match__url" href="{{ m.url }}">{{ m.url }}</a>
+    <a class="apos-as--c-match__title" href="<%- match._url %>" ><%- match.title %></a>
+    <a class="apos-as--c-match__url" href="<%- match._url %>"><%- match._url %></a>
     <p class="apos-as--c-match__excerpt">
-      {{ m.excerpt }}
+      <%- _.trunc(match.searchSummary, {
+        length: 400
+      }) %>
     </p>
-    {% if m.groups.length %}
+    {# <% if (match.groups.length) { %> #}
       <ul class="apos-as--c-match__group-items">
-        {% for item in m.groups %}
+        {# <% _.forEach(match.groups, function(item) { %> #}
           <li class="apos-as--c-match__group-item">
-            <button class="apos-as--c-match__group-item-button">{{ item.typeLabel }}</button>
+            <button class="apos-as--o-pill-button apos-as--c-match__group-item-button"><%- match.type %></button>
           </li>
-        {% endfor %}
+        {# <% }); %> #}
       </ul>
-    {% endif %}
+    {# <% } %> #}
   </section>
 {% endmacro %}
 

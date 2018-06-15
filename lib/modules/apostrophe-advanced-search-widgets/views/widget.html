@@ -3,7 +3,6 @@
 {%- set filters = apos.modules['apostrophe-advanced-search'].filters -%}
 {%- set matches = apos.modules['apostrophe-advanced-search'].matches -%}
 
-
 <div class="apos-as" data-apos-as>
   <div class="apos-as__search-bar">
     <div class="apos-as__input-outer-wrapper">
@@ -12,6 +11,14 @@
         <span class="apos-as__search-indicator" data-apos-as-search-indicator>&nbsp;</span>
         <button class="apos-as__input-icon">{{ macros.mag() }}</button>
       </div>
+      <ul class="apos-as__suggestions-items">
+        <li class="apos-as__suggestions-item"><button data-apos-as-suggestion class="apos-as--o-pill-button apos-as__suggestions-button">Car Tyres</button></li>
+        <li class="apos-as__suggestions-item"><button data-apos-as-suggestion class="apos-as--o-pill-button apos-as__suggestions-button">Motorbike Tyres</button></li>
+        <li class="apos-as__suggestions-item"><button data-apos-as-suggestion class="apos-as--o-pill-button apos-as__suggestions-button">Dealers</button></li>
+        <li class="apos-as__suggestions-item"><button data-apos-as-suggestion class="apos-as--o-pill-button apos-as__suggestions-button">Advice</button></li>
+        <li class="apos-as__suggestions-item"><button data-apos-as-suggestion class="apos-as--o-pill-button apos-as__suggestions-button">Car Manufacturer</button></li>
+        <li class="apos-as__suggestions-item"><button data-apos-as-suggestion class="apos-as--o-pill-button apos-as__suggestions-button">Project</button></li>
+      </ul>
     </div>
     <button class="apos-as__close" data-apos-as-close>{{ macros.close() }}</button>
   </div>
@@ -19,8 +26,19 @@
     <div class="apos-as__results__column apos-as__results__filters" data-apos-as-filters>
       {{ macros.filters(filters) }}
     </div>
-    <div class="apos-as__results__column apos-as__results__matches" data-apos-as-matches>
-      {{ macros.matches(matches) }}
+    <div class="apos-as__results__column apos-as__results__matches">
+      <div class="apos-as--c-filter__label apos-as__search-count" data-apos-as-search-count>
+        <script type="text/html" data-template="count">
+          Showing results <strong><%- first %>-<%- last %></strong> of <strong><%- total %></strong> for "<%- query %>"
+        </script>
+      </div>
+      <div class="apos-as__results__matches-list"  data-apos-as-matches>
+        <script type="text/html" data-template="match">
+          <% _.forEach(docs, function(match) { %>
+            {{ macros.matchItemTemplate() }}
+          <% }); %>
+        </script>
+      </div>
     </div>
     <div class="apos-as__results__column apos-as__results__static" data-apos-as-static>
       <div class="apos-as__static-item">
