@@ -1,6 +1,6 @@
 {
   "name": "apostrophe-advanced-search",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "An advanced search interface for Apostrophe",
   "main": "index.js",
   "scripts": {
