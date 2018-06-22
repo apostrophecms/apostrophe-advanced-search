@@ -12,8 +12,8 @@
   </svg>
 {% endmacro %}
 
-{% macro close() %}
-<svg class="apos-as---o-close" width="13px" height="13px" viewBox="0 0 13 13" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+{% macro close(width) %}
+<svg class="apos-as---o-close" width="{{ width }}" height="13px" viewBox="0 0 13 13" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
     <g transform="translate(-5082.000000, -159.000000)">
       <g transform="translate(4027.000000, 142.000000)">
@@ -42,15 +42,23 @@
 {% endmacro %}
 
 {% macro filters(array) %}
-  {% for item in array %}
-    {{ filterItem(item) }}
-  {% endfor %}
+  <section class="apos-as--c-filter">
+    <div class="apos-as--c-filter__label">Content Types</div>
+    <ul class="apos-as--c-filter__items">
+      {% for item in array %}
+        <li class="apos-as--c-filter__item" data-apos-as-filter-type="{{ item.name }}">
+          <button class="apos-as--c-filter__button" data-apos-as-filter="{{ item.name }}">{{ item.label }}</button>
+          <span class="apos-as--c-filter__count" data-apos-as-filter-count>0</span>
+        </li>
+      {% endfor %}
+    </ul>
+  </section>
 {% endmacro %}
 
 {% macro matchItemTemplate() %}
-  <section class="apos-as--c-match">
-    <a class="apos-as--c-match__title" href="<%- match._url %>" ><%- match.title %></a>
-    <a class="apos-as--c-match__url" href="<%- match._url %>"><%- match._url %></a>
+  <a href="<%- match._url %>" class="apos-as--c-match">
+    <span class="apos-as--c-match__title" href="<%- match._url %>" ><%- match.title %></span>
+    <span class="apos-as--c-match__url" href="<%- match._url %>"><%- match._url %></span>
     <p class="apos-as--c-match__excerpt">
       <%- _.trunc(match.searchSummary, {
         length: 400
@@ -65,7 +73,7 @@
         {# <% }); %> #}
       </ul>
     {# <% } %> #}
-  </section>
+  </a>
 {% endmacro %}
 
 {% macro matches(array) %}

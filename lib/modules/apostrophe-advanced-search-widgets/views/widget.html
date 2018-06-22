@@ -1,10 +1,10 @@
 {% import "_macros.html" as macros %}
 
-{%- set filters = apos.modules['apostrophe-advanced-search'].filters -%}
+{%- set filters = apos.modules['apostrophe-advanced-search-search'].options.filters -%}
 {%- set matches = apos.modules['apostrophe-advanced-search'].matches -%}
 
 <div class="apos-as" data-apos-as>
-  <div class="apos-as__search-bar">
+  <div class="apos-as__search-bar" data-apos-as-search-bar>
     <div class="apos-as__input-outer-wrapper">
       <div class="apos-as__input-inner-wrapper">
         <input type="text" class="apos-as__search-input" data-apos-as-search-input placeholder="Search the website">
@@ -20,16 +20,21 @@
         <li class="apos-as__suggestions-item"><button data-apos-as-suggestion class="apos-as--o-pill-button apos-as__suggestions-button">Project</button></li>
       </ul>
     </div>
-    <button class="apos-as__close" data-apos-as-close>{{ macros.close() }}</button>
+    <button class="apos-as__close" data-apos-as-close>{{ macros.close('13px') }}</button>
   </div>
-  <div class="apos-as__results" data-apos-as-results>
-    <div class="apos-as__results__column apos-as__results__filters" data-apos-as-filters>
+  <div class="apos-as--u-hidden-before-results apos-as__results" data-apos-as-results>
+    <div class="apos-as__results__column apos-as__results__filters">
       {{ macros.filters(filters) }}
     </div>
     <div class="apos-as__results__column apos-as__results__matches">
       <div class="apos-as--c-filter__label apos-as__search-count" data-apos-as-search-count>
         <script type="text/html" data-template="count">
           Showing results <strong><%- first %>-<%- last %></strong> of <strong><%- total %></strong> for "<%- query %>"
+        </script>
+      </div>
+      <div class="apos--c-current-filters" data-apos-as-current-filters>
+        <script type="text/html" data-template="current-filter">
+          <button data-apos-as-current-filter="<%- name %>" class="apos-as--o-pill-button apos-as--c-current-filter">{{ macros.close('6px') }}<%- label %></button>
         </script>
       </div>
       <div class="apos-as__results__matches-list"  data-apos-as-matches>
@@ -39,8 +44,12 @@
           <% }); %>
         </script>
       </div>
+      <div class="apos-as__pager" data-apos-as-pager>
+        <button class="apos-as__pager__button apos-as__pager__button--prev" data-apos-as-prev data-apos-as-page>Prev</button>
+        <button class="apos-as__pager__button apos-as__pager__button--next" data-apos-as-next data-apos-as-page>Next</button>
     </div>
-    <div class="apos-as__results__column apos-as__results__static" data-apos-as-static>
+    </div>
+    {# <div class="apos-as__results__column apos-as__results__static" data-apos-as-static>
       <div class="apos-as__static-item">
         <img src="http://via.placeholder.com/350x150" alt="">
         <p>Okras are dusky errors. One cannot separate dimples from unblenched loves. Before uses, fiberglasses were only beaches. This is not to discredit the idea that one cannot separate polands from dreamlike mice.</p>
@@ -49,19 +58,7 @@
         <img src="http://via.placeholder.com/350x150" alt="">
         <p>A spring is a sampan from the right perspective. The geese could be said to resemble unfledged pinks. Okras are dusky errors. One cannot separate dimples from unblenched loves. Before uses, fiberglasses were only beaches. This is not to discredit the idea that one cannot separate polands from dreamlike mice.</p>
       </div>
-    </div>
-  </div>
-  <div class="apos-as__pager">
-    <button class="apos-as__pager__button apos-as__pager__button--prev" data-apos-as-prev>Prev</button>
-    <ul class="apos-as__pager__pages">
-      <li class="apos-as__pager__page">
-        <button class="apos-as__pager__page-button apos-as__pager__page-button--active">1</button>
-        <button class="apos-as__pager__page-button">2</button>
-        <button class="apos-as__pager__page-button">3</button>
-        <button class="apos-as__pager__page-button">4</button>
-      </li>
-    </ul>
-    <button class="apos-as__pager__button apos-as__pager__button--next" data-apos-as-next>Next</button>
+    </div> #}
   </div>
 </div>
 

@@ -17,6 +17,7 @@
 
 .apos-as--c-filter__button {
   display: block;
+  width: 100%;
   background-color: transparent;
   border: none;
   padding: 4px 0;
@@ -25,14 +26,16 @@
   transform: color 0.3s ease;
   flex-grow: 1;
   text-align: left;
+  outline: none;
   &:hover {
     cursor: pointer;
-    color: #4A90E2;
-    & + .apos-as--c-filter__count {
-      background-color: @apos-as-link;
-      color: white;
-    }
+    color: @apos-as-link;
   }
+}
+
+.apos-as--c-filter__item--active .apos-as--c-filter__button {
+  font-weight: 700;
+  color: @apos-as-link;
 }
 
 .apos-as--c-filter__count {
@@ -46,4 +49,23 @@
   width: 20px;
   align-items: center;
   justify-content: center;
+
+}
+
+.apos--c-current-filters {
+  position: absolute;
+  display: flex;
+  right: 0;
+  top: 0;
+}
+
+.apos-as--c-current-filter {
+  background-color: @apos-as-link;
+  color: white;
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+  svg {
+    margin-right: 5px;
+  }
 }

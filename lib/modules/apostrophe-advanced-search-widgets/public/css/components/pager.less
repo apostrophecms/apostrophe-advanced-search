@@ -2,7 +2,7 @@
 .apos-as__pager__page-button {
   border-radius: 0;
   outline: none;
-  padding: 0;
+  padding: 30px 0;
   border: none;
   background-color: transparent;
   &:hover {
@@ -30,17 +30,17 @@
 }
 
 .apos-as__pager {
-  margin-left: 15%;
-  width: 60%;
+  // margin-left: 15%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   border-top: 1px solid #D5D5D5;
-  padding-top: 20px;
-  height: 60px;
+  padding-top: 60px;
+  margin-bottom: 60px;
 }
 
 .apos-as__pager__button {
-  width: 10%;
+  width: 40%;
   text-align: center;
   -webkit-transform: all 0.3s ease;
   transform: all 0.3s ease;
@@ -50,4 +50,13 @@
 .apos-as__pager__pages,
 .apos-as__pager__page {
   display: flex;
+}
+
+.apos-as__pager__button--disabled {
+  opacity: 0.5;
+  &:hover {
+    border: 1px solid #D5D5D5;
+    cursor: not-allowed;
+    color: #363636;
+  }
 }
